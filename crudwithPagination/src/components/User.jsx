@@ -29,6 +29,7 @@ function User() {
 
   const toast = useToast();
 
+  // ******************Using Regex for Form Validation***********************
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\$@]*@[^\$@]*\.[^\$@]{2,}$/i;
@@ -64,10 +65,14 @@ function User() {
     return errors;
   };
 
+  // ***************Updating the data*********************
+
   const handleEdit = (index) => {
     setEditFormData(formData[index]);
     setEditingIndex(index);
   };
+
+  // **************Deleting the data*************************
 
   const handleDelete = (index) => {
     const updatedData = formData.filter((_, i) => i !== index);
@@ -82,6 +87,7 @@ function User() {
     });
   };
 
+  //*****************Submitting the form********************** */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -130,6 +136,8 @@ function User() {
     }
   }, [formErrors]);
 
+  //***************Pagination***************** */
+
   const handleItemsPerPageChange = (e) => {
     setItemsPerPage(parseInt(e.target.value, 10));
   };
@@ -150,13 +158,13 @@ function User() {
         mx="auto"
         border="1px solid black"
         borderRadius="20px"
-        boxShadow="md" // Add a shadow for a lifted effect
-        bgColor="#A076F9" // Set the background color
-        color="white" // Set the text color
+        boxShadow="md"
+        bgColor="#A076F9"
+        color="white"
         fontWeight="bold"
         transition="background-color 0.3s, color 0.3s" // Add a transition effect
         _hover={{
-          // Userly styles when hovering
+          //  styles when hovering
           bgColor: "purple.600",
         }}
       >
